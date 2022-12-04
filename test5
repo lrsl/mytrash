@@ -1,7 +1,7 @@
 #!/bin/bash
 arc=$(uname -a)
 pcpu=$(grep "physical id" /proc/cpuinfo | sort | uniq | wc -l)
-vcpu=$(grep "^processor" /proc/cpuinfo | wc -l)
+vcpu=$(cat /proc/cpuinfo | grep processor | wc -l)
 fram=$(free -m | awk '$1 == "Mem:" {print $2}')
 uram=$(free -m | awk '$1 == "Mem:" {print $3}')
 pram=$(free | awk '$1 == "Mem:" {printf("%.2f"), $3/$2*100}')
